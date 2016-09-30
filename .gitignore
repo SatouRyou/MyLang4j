@@ -1,12 +1,6 @@
 
 .DS_Store
-.idea/compiler.xml
-.idea/copyright/
-.idea/libraries/
-.idea/misc.xml
-.idea/modules.xml
-.idea/uiDesigner.xml
-.idea/workspace.xml
+.idea/
 MyLangJava.iml
 pom.xml
 src/main/resources/
