@@ -7,8 +7,10 @@ import MyLangJava.Expression.SymbolValue;
 import MyLangJava.operator.AddOperator;
 import MyLangJava.operator.EqualOperator;
 import MyLangJava.operator.GetOperator;
+import MyLangJava.operator.LambdaOperator;
 import MyLangJava.operator.MultiplyOperator;
 import MyLangJava.operator.PrintOperator;
+import MyLangJava.operator.ProcOperator;
 import MyLangJava.operator.SetOperator;
 import MyLangJava.operator.StepOperator;
 import MyLangJava.operator.UntilOperator;
@@ -33,6 +35,7 @@ public class Engine {
         variables.put("until", new UntilOperator());
         variables.put("step", new StepOperator());
         variables.put("print", new PrintOperator());
+        variables.put("lambda", new LambdaOperator());
     }
 
     public Object eval(Object script){
