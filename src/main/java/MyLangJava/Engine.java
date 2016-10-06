@@ -8,7 +8,7 @@ import MyLangJava.operator.AddOperator;
 import MyLangJava.operator.EqualOperator;
 import MyLangJava.operator.GetOperator;
 import MyLangJava.operator.MultiplyOperator;
-import MyLangJava.operator.OperatorInterface;
+import MyLangJava.operator.PrintOperator;
 import MyLangJava.operator.SetOperator;
 import MyLangJava.operator.StepOperator;
 import MyLangJava.operator.UntilOperator;
@@ -22,17 +22,17 @@ import java.util.Map;
  */
 public class Engine {
 
-    public Map<String, OperatorInterface> operators = new HashMap<String, OperatorInterface>();
     public Map<String, Object> variables = new HashMap<String, Object>();
 
     public Engine(){
-        operators.put("+", new AddOperator());
-        operators.put("*", new MultiplyOperator());
-        operators.put("=", new EqualOperator());
-        operators.put("set", new SetOperator());
-        operators.put("get", new GetOperator());
-        operators.put("until", new UntilOperator());
-        operators.put("step", new StepOperator());
+        variables.put("+", new AddOperator());
+        variables.put("*", new MultiplyOperator());
+        variables.put("=", new EqualOperator());
+        variables.put("set", new SetOperator());
+        variables.put("get", new GetOperator());
+        variables.put("until", new UntilOperator());
+        variables.put("step", new StepOperator());
+        variables.put("print", new PrintOperator());
     }
 
     public Object eval(Object script){
@@ -44,7 +44,7 @@ public class Engine {
         if (script instanceof List){
             List<?> scriptList = (List<?>)script;
             return new CallOperator(
-                    operators.get(scriptList.get(0)),
+                    scriptList.get(0),
                     scriptList.subList(1, scriptList.size()));
         }else if (script instanceof String){
             return new SymbolValue((String)script);

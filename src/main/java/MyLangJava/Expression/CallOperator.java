@@ -10,16 +10,18 @@ import java.util.List;
  */
 public class CallOperator implements ExpressionInterface {
 
-    private OperatorInterface operator;
+    private Object operator;
     private List<?> args;
 
-    public CallOperator(OperatorInterface operator, List<?> args){
+    public CallOperator(Object operator, List<?> args){
         this.operator = operator;
         this.args = args;
     }
 
     @Override
     public Object eval( Engine engine ) {
-        return operator.call( engine, args );
+
+        OperatorInterface operator = (OperatorInterface)engine.eval(this.operator);
+        return operator.call( engine, this.args );
     }
 }
