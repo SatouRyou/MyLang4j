@@ -3,6 +3,7 @@ package MyLangJava;
 import MyLangJava.Expression.CallOperator;
 import MyLangJava.Expression.ExpressionInterface;
 import MyLangJava.Expression.ImmediateValue;
+import MyLangJava.Expression.SymbolValue;
 import MyLangJava.operator.AddOperator;
 import MyLangJava.operator.EqualOperator;
 import MyLangJava.operator.GetOperator;
@@ -45,6 +46,8 @@ public class Engine {
             return new CallOperator(
                     operators.get(scriptList.get(0)),
                     scriptList.subList(1, scriptList.size()));
+        }else if (script instanceof String){
+            return new SymbolValue((String)script);
         }else{
             return new ImmediateValue(script);
         }

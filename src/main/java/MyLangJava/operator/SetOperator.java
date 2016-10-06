@@ -11,7 +11,7 @@ public class SetOperator implements OperatorInterface {
     @Override
     public Object call(Engine engine, List<?> args) {
         Object retVal = engine.eval(args.get(1));
-        engine.variables.put((String)engine.eval(args.get(0)), retVal);
+        engine.variables.put((String)args.get(0), retVal);
         return retVal;
     }
 }

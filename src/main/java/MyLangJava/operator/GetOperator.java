@@ -11,6 +11,6 @@ public class GetOperator implements  OperatorInterface {
     @Override
     public Object call(Engine engine, List<?> args) {
 
-        return engine.variables.get(engine.eval(args.get(0)));
+        return engine.variables.get(args.get(0));
     }
 }
