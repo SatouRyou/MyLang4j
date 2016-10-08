@@ -15,6 +15,6 @@ public class SymbolValue implements ExpressionInterface {
 
     @Override
     public Object eval(Engine engine) {
-        return engine.variables.get(symbol);
+        return engine.getVariable( this.symbol );
     }
 }

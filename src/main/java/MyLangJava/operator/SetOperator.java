@@ -10,8 +10,6 @@ import java.util.List;
 public class SetOperator implements OperatorInterface {
     @Override
     public Object call(Engine engine, List<?> args) {
-        Object retVal = engine.eval(args.get(1));
-        engine.variables.put((String)args.get(0), retVal);
-        return retVal;
+        return engine.setVariable( (String)args.get(0), engine.eval(args.get(1) ));
     }
 }

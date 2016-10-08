@@ -19,6 +19,7 @@ public class ProcOperator implements OperatorInterface {
 
     @Override
     public Object call(Engine engine, List<?> args) {
-        return engine.eval(procedure);
+        Engine _engine = new Engine(engine);
+        return _engine.eval(procedure);
     }
 }
