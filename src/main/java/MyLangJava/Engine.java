@@ -9,6 +9,7 @@ import MyLangJava.operator.EqualOperator;
 import MyLangJava.operator.GetOperator;
 import MyLangJava.operator.LambdaOperator;
 import MyLangJava.operator.MultiplyOperator;
+import MyLangJava.operator.OperatorInterface;
 import MyLangJava.operator.PrintOperator;
 import MyLangJava.operator.SetOperator;
 import MyLangJava.operator.StepOperator;
@@ -44,12 +45,16 @@ public class Engine {
     }
 
     public Object eval(Object script){
-
-        return getExpression(script).eval( this );
+        Object retVal = getExpression(script).eval(this);
+        if ( retVal instanceof OperatorInterface ) {
+            return new Closure( this, (OperatorInterface)retVal );
+        }else{
+            return retVal;
+        }
     }
 
-    public Object defineVariable(String name, Object value){
-        variables.put(name, value);
+    public Object defineVariable( String name, Object value ) {
+        variables.put( name, value );
         return value;
     }
 

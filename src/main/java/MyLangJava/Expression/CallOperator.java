@@ -1,5 +1,6 @@
 package MyLangJava.Expression;
 
+import MyLangJava.Closure;
 import MyLangJava.Engine;
 import MyLangJava.operator.OperatorInterface;
 
@@ -20,8 +21,7 @@ public class CallOperator implements ExpressionInterface {
 
     @Override
     public Object eval( Engine engine ) {
-
-        OperatorInterface operator = (OperatorInterface)engine.eval(this.operator);
-        return operator.call( engine, this.args );
+        Closure closure = (Closure)engine.eval( operator );
+        return closure.eval( args );
     }
 }
