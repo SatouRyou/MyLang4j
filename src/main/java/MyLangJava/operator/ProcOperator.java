@@ -20,6 +20,10 @@ public class ProcOperator implements OperatorInterface {
     @Override
     public Object call(Engine engine, List<?> args) {
         Engine _engine = new Engine(engine);
+        for(int i = 0;i < this.argNames.size();i++){
+            _engine.variables.put(
+                    (String)this.argNames.get(i), engine.eval(args.get(i)));
+        }
         return _engine.eval(procedure);
     }
 }
